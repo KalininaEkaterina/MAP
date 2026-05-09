@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Расписание авиарейсов</string>
+    <string name="tab_arrivals">Прилёты</string>
+    <string name="tab_types">Типы ВС</string>
+    <string name="tab_route">Маршрут</string>
+    <string name="airport">Аэропорт</string>
+    <string name="date">Дата</string>
+    <string name="departure">Вылет</string>
+    <string name="arrival">Прилёт</string>
+    <string name="run_query">Показать</string>
+    <string name="hint_date">ГГГГ-ММ-ДД</string>
+    <string name="col_flight">Рейс</string>
+    <string name="col_type">Тип</string>
+    <string name="col_from">Откуда</string>
+    <string name="col_to">Куда</string>
+    <string name="col_dep_time">Время</string>
+    <string name="col_range">Дальность, км</string>
+    <string name="col_level">Эшелон, м</string>
+</resources>
