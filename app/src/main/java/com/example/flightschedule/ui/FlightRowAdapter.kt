@@ -9,6 +9,8 @@ import com.example.flightschedule.db.AircraftTypeIconMapper
 
 class FlightRowAdapter : RecyclerView.Adapter<FlightRowAdapter.VH>() {
 
+    var onReminderClick: ((FlightListItem) -> Unit)? = null
+
     private val items = ArrayList<FlightListItem>()
 
     fun submit(list: List<FlightListItem>) {
@@ -26,16 +28,17 @@ class FlightRowAdapter : RecyclerView.Adapter<FlightRowAdapter.VH>() {
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        holder.bind(items[position])
+        holder.bind(items[position], onReminderClick)
     }
 
     class VH(private val binding: ItemFlightRowBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(row: FlightListItem) {
+        fun bind(row: FlightListItem, onReminder: ((FlightListItem) -> Unit)?) {
             binding.iconType.setImageResource(AircraftTypeIconMapper.iconForTypeName(row.aircraftTypeName))
             binding.textFlightNumber.text = row.flightNumber
             binding.textTypeName.text = row.aircraftTypeName
             binding.textRoute.text = "${row.depCode} → ${row.arrCode}"
             binding.textDateTime.text = "${row.date}  ${row.depTime}"
+            binding.buttonReminder.setOnClickListener { onReminder?.invoke(row) }
         }
     }
 }

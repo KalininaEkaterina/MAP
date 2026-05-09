@@ -44,6 +44,16 @@
         android:gravity="end"
         android:orientation="vertical">
 
+        <ImageButton
+            android:id="@+id/buttonReminder"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/reminder_3h"
+            android:padding="6dp"
+            android:src="@drawable/ic_bell" />
+
         <TextView
             android:id="@+id/textRoute"
             android:layout_width="wrap_content"

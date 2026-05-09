@@ -13,6 +13,7 @@ data class AircraftType(
 )
 
 data class FlightListItem(
+    val id: Long,
     val flightNumber: String,
     val aircraftTypeName: String,
     val depCode: String,

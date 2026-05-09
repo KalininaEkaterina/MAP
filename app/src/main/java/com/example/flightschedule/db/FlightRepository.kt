@@ -25,10 +25,9 @@ class FlightRepository(context: Context) {
         }
     }
 
-    /** (а) Рейсы прибытия в аэропорт на дату */
     fun arrivalsAtAirport(airportCode: String, date: String): List<FlightListItem> {
         val sql = """
-            SELECT f.number, t.name, f.dep_airport_code, f.arr_airport_code,
+            SELECT f._id, f.number, t.name, f.dep_airport_code, f.arr_airport_code,
                    f.flight_date, f.dep_time
             FROM flights f
             JOIN aircraft_types t ON t._id = f.aircraft_type_id
@@ -40,7 +39,6 @@ class FlightRepository(context: Context) {
         }
     }
 
-    /** (б) Типы ВС, задействованные в рейсах через выбранный аэропорт */
     fun aircraftTypesForAirport(airportCode: String): List<AircraftType> {
         val sql = """
             SELECT DISTINCT t._id, t.name, t.range_km, t.flight_level_m
@@ -65,10 +63,9 @@ class FlightRepository(context: Context) {
         }
     }
 
-    /** (в) Рейсы по пунктам вылета/прилёта и дате */
     fun flightsByRoute(depCode: String, arrCode: String, date: String): List<FlightListItem> {
         val sql = """
-            SELECT f.number, t.name, f.dep_airport_code, f.arr_airport_code,
+            SELECT f._id, f.number, t.name, f.dep_airport_code, f.arr_airport_code,
                    f.flight_date, f.dep_time
             FROM flights f
             JOIN aircraft_types t ON t._id = f.aircraft_type_id
@@ -85,12 +82,13 @@ class FlightRepository(context: Context) {
         while (c.moveToNext()) {
             out.add(
                 FlightListItem(
-                    flightNumber = c.getString(0),
-                    aircraftTypeName = c.getString(1),
-                    depCode = c.getString(2),
-                    arrCode = c.getString(3),
-                    date = c.getString(4),
-                    depTime = c.getString(5)
+                    id = c.getLong(0),
+                    flightNumber = c.getString(1),
+                    aircraftTypeName = c.getString(2),
+                    depCode = c.getString(3),
+                    arrCode = c.getString(4),
+                    date = c.getString(5),
+                    depTime = c.getString(6)
                 )
             )
         }

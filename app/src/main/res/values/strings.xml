@@ -16,4 +16,15 @@
     <string name="col_dep_time">Время</string>
     <string name="col_range">Дальность, км</string>
     <string name="col_level">Эшелон, м</string>
+    <string name="reminder_3h">За 3 ч</string>
+    <string name="reminder_scheduled">Напоминание запланировано (за 3 часа до вылета)</string>
+    <string name="reminder_too_late">Уже поздно: до вылета осталось меньше 3 часов</string>
+    <string name="reminder_invalid_time">Не удалось разобрать дату или время рейса</string>
+    <string name="reminder_permission_denied">Без разрешения на уведомления напоминание недоступно</string>
+    <string name="notif_channel_name">Напоминания о рейсах</string>
+    <string name="notif_channel_desc">Срабатывают через WorkManager, даже если приложение закрыто</string>
+    <string name="notif_title">Через 3 часа вылет: %1$s</string>
+    <string name="notif_title_debug">[DEBUG] Тест напоминания: %1$s</string>
+    <string name="notif_text_debug_suffix">\n\n(Тестовый режим: ~15 с, только debug-сборка)</string>
+    <string name="reminder_scheduled_debug">Тест: уведомление через ~15 с (сборка debug)</string>
 </resources>

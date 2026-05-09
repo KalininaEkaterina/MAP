@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flightschedule.databinding.FragmentArrivalsBinding
 import com.example.flightschedule.db.FlightRepository
+import com.example.flightschedule.reminder.ReminderCoordinator
 import com.example.flightschedule.ui.FlightRowAdapter
 
 class ArrivalsFragment : Fragment() {
@@ -17,6 +18,7 @@ class ArrivalsFragment : Fragment() {
     private var _binding: FragmentArrivalsBinding? = null
     private val binding get() = _binding!!
 
+    private val reminders = ReminderCoordinator(this)
     private val adapter = FlightRowAdapter()
 
     override fun onCreateView(
@@ -43,6 +45,7 @@ class ArrivalsFragment : Fragment() {
         }
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
         binding.recycler.adapter = adapter
+        reminders.attach(adapter)
 
         binding.buttonQuery.setOnClickListener {
             val code = airports.getOrNull(binding.spinnerAirport.selectedItemPosition)?.code
